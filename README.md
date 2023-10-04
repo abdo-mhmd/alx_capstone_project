@@ -1,49 +1,76 @@
-# ALX Capstone Project
+# Task Manager Application
 
-## Project Overview:
-The ALX Capstone Project is a web-based task management application designed to help users organize their tasks and to-do lists efficiently. Its primary purpose is to simplify task management and improve productivity. The project aims to solve the problem of scattered task lists and provides users with a centralized platform to manage their tasks effectively.
+## Project Overview
 
-## Features and Functionality:
-- User-friendly interface for adding, deleting, and viewing tasks.
-- Task list organized in a clear and intuitive manner.
-- Real-time updates for task status.
-- Responsive design for seamless use on various devices.
-- User authentication and secure task management.
-- Notifications and reminders (future enhancement).
+The Task Manager Application is a web-based task management solution designed to help users stay organized and manage their tasks efficiently. This application provides a user-friendly interface for creating, editing, and organizing tasks, making it easier for individuals and teams to track their work and boost productivity.
 
-### How to Use:
-1. Create an account or log in.
-2. Add tasks with descriptions.
-3. Mark tasks as completed or delete them.
-4. Organize tasks by due date or priority.
-5. Stay organized and improve productivity.
+**Key Goals:**
+- Streamline task management for individuals and teams.
+- Provide an intuitive and responsive user interface.
+- Enable users to create, edit, delete, and categorize tasks.
+- Implement user authentication for secure access to task lists.
 
-## Technologies Used:
-- Front-end: HTML, CSS, JavaScript
-- Back-end: Python, Flask
-- Database: MySql (for demo purposes)
-- User Authentication: TBD (e.g., OAuth, JWT)
-- Hosting and Deployment: Heroku
-- Version Control: Git and GitHub
+## Features and Functionality
 
-## Screenshots or Demo:
-[Link to Live Demo](#) (coming soon)
+### Main Features:
 
-![Screenshot 1](/screenshots/screenshot1.png)
-*Caption for Screenshot 1*
+1. **User Registration and Authentication:**
+   - Securely create user accounts and log in.
+   - Protect user data and task lists with authentication.
 
-![Screenshot 2](/screenshots/screenshot2.png)
-*Caption for Screenshot 2*
+2. **Task Management:**
+   - Create new tasks with titles, descriptions, due dates, and priorities.
+   - Edit existing tasks to update details.
+   - Mark tasks as completed.
+   - Delete tasks when no longer needed.
 
-## Roadmap and Future Enhancements:
-In the future, we plan to enhance the ALX Capstone Project with the following features:
+3. **Task Organization:**
+   - Filter tasks by due date, priority, or category.
+   - Search for specific tasks using keywords.
+   - Categorize tasks into custom categories.
+
+4. **User-Friendly Interface:**
+   - Intuitive and responsive design for a seamless user experience.
+   - Real-time updates for task status changes.
+   - Interactive elements for easy task management.
+
+### Technologies Used
+
+- **Front-end:**
+  - HTML
+  - CSS
+  - JavaScript
+
+- **Back-end:**
+  - Python
+  - Flask (Web Framework)
+  
+- **Database:**
+  - MySQL (Database Management System)
+
+- **API:**
+  - RESTful API built with Flask
+
+- **Version Control:**
+  - Git (Version Control System)
+  - GitHub (Code Hosting and Collaboration)
+
+## Screenshots or Demo
+
+Screenshots and a live demo of the Task Manager Application will be provided in the near future as the project progresses.
+
+## Roadmap and Future Enhancements
+
+The project's roadmap includes the following future enhancements:
+
 - User collaboration and shared task lists.
-- Task categorization and tagging.
+- Task categorization and tagging for improved organization.
 - Notifications and reminders via email or push notifications.
-- Integration with third-party productivity tools (e.g., Google Calendar).
-- Mobile app development for iOS and Android.
+- Integration with third-party productivity tools.
+- Development of mobile apps for iOS and Android platforms.
 
-## Contact Information:
+## Contact Information
+
 - **Name:** Your Name
 - **Email:** your@email.com
 - **GitHub:** [Your GitHub Profile](https://github.com/yourusername)
