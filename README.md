@@ -1,10 +1,11 @@
 # Task Manager Application
 
-## Project Overview
-
 The Task Manager Application is a web-based task management solution designed to help users stay organized and manage their tasks efficiently. This application provides a user-friendly interface for creating, editing, and organizing tasks, making it easier for individuals and teams to track their work and boost productivity.
 
-**Key Goals:**
+![Task Manager Application Screenshot](./Screenshot%202023-10-04%20204633.png)
+
+## Key Goals
+
 - Streamline task management for individuals and teams.
 - Provide an intuitive and responsive user interface.
 - Enable users to create, edit, delete, and categorize tasks.
@@ -12,29 +13,31 @@ The Task Manager Application is a web-based task management solution designed to
 
 ## Features and Functionality
 
-### Main Features:
+### User Registration and Authentication
 
-1. **User Registration and Authentication:**
-   - Securely create user accounts and log in.
-   - Protect user data and task lists with authentication.
+- Securely create user accounts and log in.
+- Protect user data and task lists with authentication.
 
-2. **Task Management:**
-   - Create new tasks with titles, descriptions, due dates, and priorities.
-   - Edit existing tasks to update details.
-   - Mark tasks as completed.
-   - Delete tasks when no longer needed.
+### Task Management
 
-3. **Task Organization:**
-   - Filter tasks by due date, priority, or category.
-   - Search for specific tasks using keywords.
-   - Categorize tasks into custom categories.
+- Create new tasks with titles, descriptions, due dates, and priorities.
+- Edit existing tasks to update details.
+- Mark tasks as completed.
+- Delete tasks when no longer needed.
 
-4. **User-Friendly Interface:**
-   - Intuitive and responsive design for a seamless user experience.
-   - Real-time updates for task status changes.
-   - Interactive elements for easy task management.
+### Task Organization
 
-### Technologies Used
+- Filter tasks by due date, priority, or category.
+- Search for specific tasks using keywords.
+- Categorize tasks into custom categories.
+
+### User-Friendly Interface
+
+- Intuitive and responsive design for a seamless user experience.
+- Real-time updates for task status changes.
+- Interactive elements for easy task management.
+
+## Technologies Used
 
 - **Front-end:**
   - HTML
@@ -73,6 +76,19 @@ The project's roadmap includes the following future enhancements:
 
 - **Name:** Your Name
 - **Email:** abdo202224@gmail.com
-- **GitHub:** https://github.com/abdo-mhmd
-- **LinkedIn:** https://www.linkedin.com/in/jingyi-su-33766b154
-- **Portfolio:** https://www.abdomhmdportfolio.com
+- **GitHub:** [GitHub Profile](https://github.com/abdo-mhmd)
+- **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/jingyi-su-33766b154)
+- **Portfolio:** [Portfolio Website](https://www.abdomhmdportfolio.com)
+
+## Getting Started
+
+To get started with the Task Manager Application, follow these steps:
+
+1. Clone this repository to your local machine.
+2. Set up your development environment as described in the README.
+3. Initialize the Flask app and configure it.
+4. Create the necessary database and tables in MySQL.
+5. Run the Flask app using `python run.py`.
+
+Enjoy organizing your tasks and boosting your productivity with the Task Manager Application!
+
