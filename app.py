@@ -168,6 +168,7 @@ def complete_task(id):
     flash('Task completed successfully', 'success')
     return redirect(url_for(render))
 
+
 @app.route('/addcategory', methods=['GET', 'POST'])
 @login_required
 def add_category():
@@ -181,6 +182,7 @@ def add_category():
         return redirect(url_for('add_category'))
     return render_template('category.html', form=form, categories=categories)
 
+
 @app.route('/deletecategory/<int:id>')
 @login_required
 def delete_category(id):
@@ -189,6 +191,7 @@ def delete_category(id):
     db.session.commit()
     flash('Category deleted successfully', 'success')
     return redirect(url_for('add_category'))
+
 
 @app.route('/completedtasks')
 @login_required
@@ -312,4 +315,4 @@ def profile():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=False, host='0.0.0.0', port=5000)
