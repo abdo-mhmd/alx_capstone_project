@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% block title %}Update Task{% endblock %}
+{% block content %}
+<div class="content">
+    <div class="card">
+        <div class="card-image">
+            <h3 class="card-heading">
+                Update task
+            </h3>
+        </div>
+        <form class="card-form" action="{{url_for('update_task', id=id)}}" method="POST">
+            {{ form.csrf_token }}
+            <div class="input">
+                {{ form.title(class='input-field') }}
+                {{ form.title.label(class='input-label') }}
+                {% if form.title.errors %}
+                {% for error in form.title.errors %}
+                <span class="field-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="input">
+                {{ form.due_date(class='input-field') }}
+                {{ form.due_date.label(class='input-label') }}
+                {% if form.due_date.errors %}
+                {% for error in form.due_date.errors %}
+                <span class="field-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="input">
+                {{ form.description(class='input-field') }}
+                {{ form.description.label(class='input-label') }}
+                {% if form.description.errors %}
+                {% for error in form.description.errors %}
+                <span class="field-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="input">
+                {{ form.category(class='input-field') }}
+                {{ form.category.label(class='input-label') }}
+                {% if form.category.errors %}
+                {% for error in form.category.errors %}
+                <span class="field-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="input">
+                {{ form.priority(class='input-field') }}
+                {{ form.priority.label(class='input-label') }}
+                {% if form.priority.errors %}
+                {% for error in form.priority.errors %}
+                <span class="field-error">{{ error }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="action">
+                {{form.submit(class='action-button')}}
+            </div>
+
+        </form>
+    </div>
+
+</div>
+{% endblock %}

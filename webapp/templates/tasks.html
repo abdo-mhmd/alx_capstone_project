@@ -1,0 +1,135 @@
+{% extends 'index.html' %}
+{% block title %}Task Manage{% endblock %}
+{% block content %}
+<div class="content">
+
+    <!-- add new task -->
+    <div class="add-task">
+        <h2>Tasks List</h2>
+        <a href="{{url_for('add_task')}}">Add Task</a>
+    </div>
+    <!-- search bar -->
+    <div class="task-filter">
+        <form action="{{url_for('tasks')}}" method="POST">
+            <span class="material-symbols-outlined">
+                filter_alt
+            </span>
+            <input type="text" name="search" placeholder="Search By Title">
+            <input type="submit" value="Search">
+        </form>
+        <!-- filter by date -->
+        <form action="{{url_for('search_by_date')}}" method="POST">
+            <span class="material-symbols-outlined">
+                calendar_month
+            </span>
+            <div>
+                <label for="start_date">Start Date:</label>
+                <input type="datetime-local" name="start_date" id="start_date">
+            </div>
+            <div>
+                <label for="end_date">End Date:</label>
+                <input type="datetime-local" name="end_date" id="end_date">
+            </div>
+            <input type="submit" value="Filter">
+        </form>
+    </div>
+    <!-- filter specific date -->
+    <div class="task-calender">
+        <ul class="filter-list">
+            <li class="dropdown">
+                Priority
+                <button class="dropbtn"></button>
+                <div class="dropdown-content">
+                    <a href="{{url_for('priority_tasks', priority='high')}}">High</a>
+                    <a href="{{url_for('priority_tasks', priority='medium')}}">Medium</a>
+                    <a href="{{url_for('priority_tasks', priority='low')}}">Low</a>
+                </div>
+            </li>
+            <li>
+                <a href="{{url_for('today_tasks')}}">Today Tasks</a>
+            </li>
+            <li>
+                <a href="{{url_for('tomorrow_tasks')}}">Tomorow Tasks</a>
+            </li>
+            <li>
+                <a href="{{url_for('week_tasks')}}">This Week Tasks</a>
+            </li>
+            <li>
+                <a href="{{url_for('monthly_tasks')}}">This Month Tasks</a>
+            </li>
+            <li>
+                <a href="{{url_for('completed_tasks')}}">Complete Tasks</a>
+            </li>
+            <li>
+                <a href="{{url_for('tasks')}}">All Tasks</a>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <!-- if len of tasks is empty -->
+    {% if not tasks %}
+    <!-- no tasks found -->
+    <h3>No tasks found</h3>
+    {% else %}
+    <!-- rows for tasks -->
+    <h3>All Tasks</h3>
+    <div class="tasks">
+        {% for task in tasks %}
+        <div class="task-row">
+            <div class="task-info">
+                <div class="task-col">
+                    <span class="material-symbols-outlined">
+                        title
+                    </span>
+                    {{task.title}}
+                </div>
+                <div class="task-col">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                    {{task.due_date}}
+                </div>
+                <div class="task-col">
+                    <span class="material-symbols-outlined">
+                        description
+                    </span>
+                    {{task.description}}
+                </div>
+                <div class="task-col">
+                    <span class="material-symbols-outlined">
+                        category
+                    </span>
+                    {{task.categories.name}}
+
+                    <!-- {{task.category_id}} -->
+                </div>
+                <div class="task-col">
+                    <span class="material-symbols-outlined">
+                        priority_high
+                    </span>
+                    {{task.priority}}
+                </div>
+                <div class="task-col">
+                    <span class="material-symbols-outlined">
+                        check_box
+                    </span>
+                    {% if task.status == True%}
+                    Completed
+                    {% else %}
+                    Not Completed
+                    {% endif %}
+                    <!-- {{task.status}} -->
+                </div>
+            </div>
+            <div class="task-action">
+                <a href="{{url_for('update_task', id=task.id)}}">Update</a>
+                <a href="{{url_for('delete_task', id=task.id)}}">Delete</a>
+                <a href="{{url_for('complete_task', id=task.id, render='tasks')}}">Complete</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+{% endblock%}

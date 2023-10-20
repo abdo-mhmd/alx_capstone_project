@@ -1,0 +1,67 @@
+{% extends 'index.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="content">
+        <h3 class="today-tasks-title">
+            Today's Tasks
+        </h3>
+        <br>
+        <div class="today-tasks">
+            <div class="task-list">
+                {% for task in tasks%}
+                {% if task.due_date.day == date.day and task.due_date.month == date.month and task.due_date.year ==
+                date.year %}
+                <div class="task">
+                    <h3 class="task-name">
+                        <span class="material-symbols-outlined">
+                            task_alt
+                        </span>
+                        {{task.title}}
+                    </h3>
+                    {%if task.status == False%}
+                    <h4>Task Done: <span>0</span> / 10</h4>
+                    <span class="line"></span>
+                    <a href="{{url_for('complete_task', id=task.id, render='home')}}">complete</a>
+                    {%else%}
+                    <h4>Task Done: <span>10</span> / 10</h4>
+                    <span class="sline"></span>
+                    <p>Completed</p>
+                    {%endif%}
+                </div>
+                <hr>
+                {% else %}
+                No tasks today!
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h3 class="today-timeline-title">
+            All Tasks Timeline
+        </h3>
+        <br>
+        <div class="today-timeline">
+            <div class="task-content">
+                {% for task in tasks %}
+                <div class="row">
+                    <span class="material-symbols-outlined">
+                        task
+                    </span>
+                    {{task.title}}
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span>
+                    {{task.due_date}}
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

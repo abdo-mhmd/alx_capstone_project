@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="content">
+    <!-- edit profile form -->
+    <div class="">
+        <h2>Edit Profile</h2>
+        <form action="{{url_for('profile')}}" class="profile-info" method="post">
+            {{user_form.csrf_token}}
+            <div class="action">
+                {{user_form.submit(class="action-button", value="Update Profile")}}
+            </div>
+            <div class="input">
+                {{user_form.username(class="input-field")}}
+                {{user_form.username.label(class="input-label")}}
+            </div>
+            <div class="input">
+                {{user_form.email(class="input-field")}}
+                {{user_form.email.label(class="input-label")}}
+            </div>
+        </form>
+    </div>
+    <hr>
+
+    <!-- change password form -->
+    <button id="change_password_btn" onclick="changePassword()">change password</button><br>
+    <div class="change-password" style="display: none;">
+        <form action="{{url_for('profile')}}" method="post">
+            {{change_form.csrf_token}}
+            <div class="">
+                {{change_form.old_password.label(class="")}}
+                {{change_form.old_password(class="")}}
+            </div>
+            <div class="">
+                {{change_form.new_password.label(class="")}}
+                {{change_form.new_password(class="")}}
+            </div>
+            <div class="">
+                {{change_form.confirm_password.label(class="")}}
+                {{change_form.confirm_password(class="")}}
+            </div>
+            <div class="action">
+                {{change_form.submit(class="", value='Change')}}
+            </div>
+        </form>
+    </div>
+    <!-- back to home -->
+    <div>
+        <a href="{{url_for('home')}}">back to home =></a>
+
+    </div>
+</div>
+{% endblock %}
