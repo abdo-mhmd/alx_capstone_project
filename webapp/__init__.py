@@ -8,7 +8,7 @@ from flask_login import LoginManager
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'pass': '',
+    'pass': 'root',
     'database': 'taskmanagerdb',
     'port': 3306
 }
