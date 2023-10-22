@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
@@ -15,7 +14,6 @@ db_config = {
 
 db = SQLAlchemy()
 login_manager = LoginManager()
-bcrypt = Bcrypt()
 migrate = Migrate()
 
 login_manager.login_view = "login"
@@ -44,8 +42,6 @@ def create_app():
 
     db.init_app(app)
     create_database(app)
-    bcrypt.init_app(app)
-
     migrate.init_app(app, db)
 
     return app

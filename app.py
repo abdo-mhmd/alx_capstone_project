@@ -4,7 +4,8 @@ from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_user, logout_user, login_required, current_user
 from webapp.models import User, Task, TaskCategory
 from webapp.forms import LoginForm, RegistrationForm, AddTaskForm, ChangePassword, AddTaskCategoryForm
-from webapp import login_manager, db, bcrypt
+from webapp import login_manager, db
+from passlib.hash import pbkdf2_sha256 as hash
 
 
 @login_manager.user_loader
@@ -39,7 +40,7 @@ def login():
         user = User.query.filter_by(email=email).first()
 
         if user:
-            if bcrypt.check_password_hash(user.password, password):
+            if hash.verify(password, user.password):
                 user.authenticated = True
                 db.session.add(user)
                 db.session.commit()
@@ -60,10 +61,11 @@ def signup():
         return redirect(url_for('home'))
     form = RegistrationForm()
     if request.method == 'POST' and form.validate_on_submit():
+        form.password.data = hash.hash(form.password.data)
         user = User(
             email=form.email.data,
             username=form.username.data,
-            password=bcrypt.generate_password_hash(form.password.data)
+            password=form.password.data,
         )
         db.session.add(user)
         db.session.commit()
