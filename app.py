@@ -19,7 +19,7 @@ app = create_app()
 @app.route('/')
 @app.route('/home')
 def home():
-    if current_user:
+    if current_user.is_authenticated:
         tasks = Task.query.all()
         user = User.query.get(current_user.get_id())
         return render_template('home.html', tasks=tasks, user=user, date=date.today())
@@ -105,6 +105,7 @@ def tasks():
 @login_required
 def add_task():
     form = AddTaskForm()
+
     if request.method == 'POST':
         task = Task(
             title=form.title.data,
@@ -119,8 +120,12 @@ def add_task():
         flash('Task added successfully', 'success')
         return redirect(url_for('tasks'))
     categories = TaskCategory.query.all()
-    form.category.choices = [(category.id, category.name)
-                             for category in categories]
+    if not categories:
+        flash('No categories found', 'danger')
+        return redirect(url_for('add_category'))
+    for category in categories:
+        form.category.choices.append((category.id, category.name))
+
     return render_template('addtask.html', form=form)
 
 
@@ -189,9 +194,20 @@ def add_category():
 @login_required
 def delete_category(id):
     category = TaskCategory.query.get(id)
-    db.session.delete(category)
-    db.session.commit()
-    flash('Category deleted successfully', 'success')
+    if not category:
+        flash('Category not found', 'danger')
+        return redirect(url_for('add_category'))
+    try:
+        db.session.delete(category)
+        db.session.commit()
+        flash('Category deleted successfully', 'success')
+    except Exception as e:
+        db.session.rollback()
+        tasks = Task.query.filter_by(category_id=id).all()
+        if tasks:
+            for task in tasks:
+                flash(f'{task.title} has category {task.categories.name}', 'danger')
+            return redirect(url_for('add_category'))
     return redirect(url_for('add_category'))
 
 
@@ -317,4 +333,5 @@ def profile():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=5000)
+    # app.run(debug=False, host='0.0.0.0', port=5000)
+    app.run(debug=True)

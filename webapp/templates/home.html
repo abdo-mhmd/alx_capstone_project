@@ -4,6 +4,7 @@
 
 {% block content %}
 <div class="main-content">
+    {% if tasks %}
     <div class="content">
         <h3 class="today-tasks-title">
             Today's Tasks
@@ -62,6 +63,15 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="content">
+        <h3 class="today-tasks-title">
+            Task Manager 
+        </h3>
+        <br>
+        <img src="{{url_for('static', filename='images/home.png')}}" alt="">
+    </div>
+    {% endif %}
 </div>
 
 {% endblock%}
