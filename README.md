@@ -2,7 +2,7 @@
 
 The Task Manager Application is a web-based task management solution designed to help users stay organized and manage their tasks efficiently. This application provides a user-friendly interface for creating, editing, and organizing tasks, making it easier for individuals and teams to track their work and boost productivity.
 
-![Task Manager Application Screenshot](./Screenshot%202023-10-04%20204633.png)
+![Task Manager Application Screenshot](./webapp/static/images/home.png)
 
 ## Key Goals
 
