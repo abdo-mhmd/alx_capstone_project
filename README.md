@@ -95,7 +95,7 @@ To get started with the Task Manager Application, follow these steps:
 
 Congratulations! You have successfully developed the Task Manager Application using Python, Flask, and MySQL. This web-based application provides a user-friendly interface for creating, editing, and organizing tasks, making it easier for individuals and teams to track their work and boost productivity.
 
-If you have any questions or comments, please feel free to reach out to me at abdo202224@gmail.com or on LinkedIn at https://www.linkedin.com/in/abdo-mhmd.
+If you have any questions or comments, please feel free to reach out to me at abdo202224@gmail.com or on LinkedIn at https://www.linkedin.com/in/abdelrahman-mohamed-56874a28a/.
 
 
 
