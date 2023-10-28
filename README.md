@@ -85,10 +85,10 @@ The project's roadmap includes the following future enhancements:
 To get started with the Task Manager Application, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Set up your development environment as described in the README.
-3. Initialize the Flask app and configure it.
-4. Install the necessary packages and dependencies.
-5. Create the necessary database `taskmanagerdb` and tables in MySQL.
+2. Set up your development environment using `virtualenv`.
+3. Initialize the Flask app and configure it to use MySQL database.
+4. Create the necessary database `taskmanagerdb` in MySQL.
+5. Install the necessary packages and dependencies using `pip install -r requirements.txt`.
 6. Run the development server using `flask run`.
 
 ## Conclusion
@@ -97,7 +97,10 @@ Congratulations! You have successfully developed the Task Manager Application us
 
 If you have any questions or comments, please feel free to reach out to me at abdo202224@gmail.com or on LinkedIn at https://www.linkedin.com/in/abdelrahman-mohamed-56874a28a/.
 
+## License
 
+MIT License
+
+Copyright (c) [2022] [Abdo Mohamed]
 
 Enjoy organizing your tasks and boosting your productivity with the Task Manager Application!
-
