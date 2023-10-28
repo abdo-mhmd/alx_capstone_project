@@ -63,15 +63,6 @@
                             Settings
                         </a>
                     </li>
-                    <li class="dashbord-list-item">
-                        <span class="material-symbols-outlined">
-                            calendar_month
-                        </span>
-                        <a href="#" class="dashbord-link">
-                            Schedule
-                        </a>
-                    </li>
-                    
                 </ul>
             </div>
         </div>
@@ -105,8 +96,8 @@
             <div class="menu-toggle" style="display: none;">
                 <ul class="navbar-menu">
                     <li class="navbar-list-item">
-                        <a href="{{url_for('home')}}" class="navbar-link">
-                            Dashboard
+                        <a href="{{url_for('add_category')}}" class="navbar-link">
+                            Category
                         </a>
                     </li>
                     <li class="navbar-list-item">
@@ -122,11 +113,6 @@
                     <li class="navbar-list-item">
                         <a href="#" class="navbar-link">
                             Settings
-                        </a>
-                    </li>
-                    <li class="navbar-list-item">
-                        <a href="#" class="navbar-link">
-                            Schedule
                         </a>
                     </li>
                     {% if current_user.authenticated %}

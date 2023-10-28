@@ -20,7 +20,9 @@ app = create_app()
 @app.route('/home')
 def home():
     if current_user.is_authenticated:
-        tasks = Task.query.all()
+        tasks = Task.query.filter_by(user_id=current_user.get_id()).all()
+        # today_tasks = [task for task in tasks if task.due_date.between(
+        #     date.today(), date.today() + timedelta(days=1))]
         user = User.query.get(current_user.get_id())
         return render_template('home.html', tasks=tasks, user=user, date=date.today())
     return redirect(url_for('login'))
@@ -285,9 +287,6 @@ def monthly_tasks():
     ).all()
     return render_template('tasks.html', tasks=tasks)
 
-# function to filter by priority
-
-
 @app.route('/priority_tasks/<string:priority>', methods=['GET', 'POST'])
 @login_required
 def priority_tasks(priority):
@@ -308,13 +307,13 @@ def profile():
             old_password = change_form.old_password.data
             new_password = change_form.new_password.data
             confirm_password = change_form.confirm_password.data
-            if not bcrypt.check_password_hash(user.password, old_password):
+            if not hash.verify(old_password, user.password):
                 flash('Old password does not match', 'danger')
                 return redirect(url_for('change_password'))
             if new_password != confirm_password:
                 flash('Passwords do not match', 'danger')
                 return redirect(url_for('profile'))
-            user.password = bcrypt.generate_password_hash(new_password)
+            user.password = hash.hash(new_password)
             db.session.commit()
             flash('Password changed successfully', 'success')
             return redirect(url_for('profile'))

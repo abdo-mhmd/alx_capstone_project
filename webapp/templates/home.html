@@ -33,8 +33,6 @@
                     {%endif%}
                 </div>
                 <hr>
-                {% else %}
-                No tasks today!
                 {% endif %}
                 {% endfor %}
             </div>
@@ -64,9 +62,12 @@
         </div>
     </div>
     {% else %}
-    <div class="content">
-        <h3 class="today-tasks-title">
-            Task Manager 
+    <div class="content-img">
+        <h3>
+            No Tasks Found!
+            <span>
+                <a href="{{url_for('add_task')}}">Please add a task</a>
+            </span>
         </h3>
         <br>
         <img src="{{url_for('static', filename='images/home.png')}}" alt="">
