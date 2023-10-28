@@ -360,6 +360,13 @@ body {
     background-color: #000
 }
 
+.container .log-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 .alert {
     height: 30px;
     display: flex;
