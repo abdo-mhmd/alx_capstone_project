@@ -523,6 +523,12 @@ body {
     padding: 2rem 1rem 0;
 }
 
+.card-form .field-error {
+    color: #f44336;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
 .input {
     display: flex;
     flex-direction: column-reverse;

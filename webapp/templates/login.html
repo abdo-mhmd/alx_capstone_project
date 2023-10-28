@@ -18,7 +18,7 @@
                 {% for category, message in messages %}
                 <div class="alert-{{ category }}" id="alert">
                     <span class="closebtn" onclick="this.parentElement.style.display='none';"><i class='bx bx-x'></i></span>
-                    <strong>{{category}} :</strong>{{ message }}
+                    <strong >{{category}} :</strong>{{ message }}
                 </div>
                 {% endfor %}
                 {% endif %}
@@ -39,10 +39,20 @@
                     <div class="input">
                         {{form.email(class="input-field")}}
                         {{form.email.label(class="input-label")}}
+                        {% if form.email.errors %}
+                        {% for error in form.email.errors %}
+                        <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="input">
                         {{form.password(class="input-field")}}
                         {{form.password.label(class="input-label")}}
+                        {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                        <span class="field-error">{{ error }}</span>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="action">
                         {{form.submit(class="action-button" , value="Log In")}}
