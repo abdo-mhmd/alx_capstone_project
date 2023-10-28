@@ -77,7 +77,7 @@ The project's roadmap includes the following future enhancements:
 - **Name:** Your Name
 - **Email:** abdo202224@gmail.com
 - **GitHub:** [GitHub Profile](https://github.com/abdo-mhmd)
-- **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/abdo-mhmd)
+- **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/abdelrahman-mohamed-56874a28a/)
 - **Portfolio:** [Portfolio Website](https://www.abdomhmdportfolio.com)
 
 ## Getting Started
