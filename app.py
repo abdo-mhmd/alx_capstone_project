@@ -215,7 +215,10 @@ def delete_category(id):
         if tasks:
             for task in tasks:
                 flash(f'{task.title} has category {task.categories.name}', 'danger')
-            return redirect(url_for('add_category'))
+            if render:
+                return redirect(url_for(render))
+            else:
+                return redirect(url_for('add_category'))
     if render:
         return redirect(url_for(render))
     return redirect(url_for('add_category'))
