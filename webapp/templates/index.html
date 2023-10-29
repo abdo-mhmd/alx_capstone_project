@@ -72,7 +72,7 @@
             <div class="navbar">
                 <h3 class="navbar-title"><a href="{{url_for('home')}}" class="navbar-link">Task Manager</a></h3>
                 <ul class="navbar-list">
-                    {% if current_user.authenticated %}
+                    {% if current_user.is_authenticated %}
                     <li class="navbar-list-item">
                         <a href="#" class="navbar-link"><i class="bx bx-profile"></i>{{current_user.username}}</a>
                     </li>

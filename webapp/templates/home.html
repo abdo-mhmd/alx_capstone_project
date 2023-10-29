@@ -22,14 +22,17 @@
                         </span>
                         {{task.title}}
                     </h3>
-                    {%if task.status == False%}
-                    <h4>Task Done: <span>0</span> / 10</h4>
-                    <span class="line"></span>
-                    <a href="{{url_for('complete_task', id=task.id, render='home')}}">complete</a>
+                    {%if task.status == True%}
+                    <span class="material-symbols-outlined">
+                        check_box
+                    </span>
+                    <h4>Task Done</h4>
                     {%else%}
-                    <h4>Task Done: <span>10</span> / 10</h4>
-                    <span class="sline"></span>
-                    <p>Completed</p>
+                    <span class="material-symbols-outlined">
+                        check_box_outline_blank
+                    </span>
+                    <h4>Task Not Done</h4>
+                    <a href="{{url_for('complete_task', id=task.id, render='home')}}">complete</a>
                     {%endif%}
                 </div>
                 <hr>
@@ -73,6 +76,85 @@
         <img src="{{url_for('static', filename='images/home.png')}}" alt="">
     </div>
     {% endif %}
-</div>
+    {% if categories %}
+    <div class="categories">
+        <h3>
+            To Do List
+        </h3>
+        <br>
+        <div class="task-category">
+            {% for category in categories %}
+            <div class="category">
+                <div class="categories-title">
+                    <h3>
+                        <span class="material-symbols-outlined">
+                            category
+                        </span>
+                        {{category.name}}
+                    </h3>
+                    <span class="material-symbols-outlined" id="more-vert" onclick="showVert('{{category.name}}')">
+                        more_vert
+                    </span>
+                </div>
+                <div class="category-vert" id="{{category.name}}-vert">
+                    <a href="{{url_for('add_category', id=category.id, render='home')}}">
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                        edit category
+                    </a>
+                    <a href="{{url_for('delete_category', id=category.id, render='home')}}">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                        delete category
+                    </a>
+                    <a href="{{url_for('add_task', category_id=category.id, render='home')}}">
+                        <span class="material-symbols-outlined">
+                            add
+                        </span>
+                        add task
+                    </a>
+                </div>
 
+                <br>
+                <hr>
+                {% for task in tasks %}
+                {% if task.category_id == category.id %}
+                <div class="task">
+                    <h3 class="task-name">
+                        <span class="material-symbols-outlined">
+                            title
+                        </span>
+                        {{task.title}}
+                    </h3>
+                    <h4>
+                        {{task.due_date}} - {{task.priority}}
+                    </h4>
+                    {%if task.status == False%}
+                    <h4>
+                        <span class="material-symbols-outlined">
+                            check_box_outline_blank
+                        </span>
+                        Task Not Done
+                    </h4>
+                    {%else%}
+                    <h4>
+                        <span class="material-symbols-outlined">
+                            check_box
+                        </span>
+                        Task Done
+                        
+                    </h4>
+                    {%endif%}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    {% endif %}
+</div>
 {% endblock%}

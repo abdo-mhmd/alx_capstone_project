@@ -33,6 +33,7 @@ class TaskCategory(database.Model):
 
     id = database.Column(database.Integer, primary_key=True)
     name = database.Column(database.String(64), nullable=False)
+    user_id = database.Column(database.Integer, database.ForeignKey('users.id'), nullable=False)
     tasks = database.relationship('Task', backref='taskcategory', lazy='dynamic')
 
 
@@ -46,10 +47,8 @@ class Task(database.Model):
     description = database.Column(database.String(256))
     status = database.Column(database.Boolean, default=False)
     priority = database.Column(database.String(20))
-    due_date = database.Column(database.DateTime, default=datetime.now())
+    due_date = database.Column(database.DateTime, default=datetime.utcnow())
     user_id = database.Column(database.Integer, database.ForeignKey('users.id'), nullable=False)
     category_id = database.Column(database.Integer, database.ForeignKey('taskcategories.id'), nullable=False)
     categories = database.relationship("TaskCategory", foreign_keys=[category_id])
-
-
 

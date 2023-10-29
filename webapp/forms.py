@@ -43,7 +43,7 @@ class LoginForm(FlaskForm):
 class AddTaskForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired()])
-    due_date = DateTimeLocalField('Due Date', validators=[DataRequired()])
+    due_date = DateTimeLocalField('Due Date', validators=[InputRequired()], format="%Y-%m-%dT%H:%M")
     status = BooleanField('Status')
     priority = SelectField('Priority', choices=[(
         "low", "Low"), ("medium", "Medium"), ("high", "High")])

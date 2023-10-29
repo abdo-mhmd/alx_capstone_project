@@ -20,11 +20,11 @@ app = create_app()
 @app.route('/home')
 def home():
     if current_user.is_authenticated:
-        tasks = Task.query.filter_by(user_id=current_user.get_id()).all()
-        # today_tasks = [task for task in tasks if task.due_date.between(
-        #     date.today(), date.today() + timedelta(days=1))]
         user = User.query.get(current_user.get_id())
-        return render_template('home.html', tasks=tasks, user=user, date=date.today())
+        user_category = TaskCategory.query.filter_by(
+            user_id=current_user.get_id()).all()
+        tasks = Task.query.filter_by(user_id=current_user.get_id()).all()
+        return render_template('home.html', categories=user_category, user=user, date=date.today(), tasks=tasks)
     return redirect(url_for('login'))
 
 
@@ -99,7 +99,7 @@ def tasks():
         ).all()
     else:
         tasks = Task.query.filter_by(user_id=current_user.get_id()).all()
-    categories = TaskCategory.query.all()
+    categories = TaskCategory.query.filter_by(user_id=current_user.get_id()).all()
     return render_template('tasks.html', tasks=tasks, categories=categories)
 
 
@@ -121,7 +121,7 @@ def add_task():
         db.session.commit()
         flash('Task added successfully', 'success')
         return redirect(url_for('tasks'))
-    categories = TaskCategory.query.all()
+    categories = TaskCategory.query.filter_by(user_id=current_user.get_id()).all()
     if not categories:
         flash('No categories found', 'danger')
         return redirect(url_for('add_category'))
@@ -182,9 +182,14 @@ def complete_task(id):
 @login_required
 def add_category():
     form = AddTaskCategoryForm()
-    categories = TaskCategory.query.all()
+    categories = TaskCategory.query.filter_by(
+        user_id=current_user.get_id()
+    ).all()
     if request.method == 'POST':
-        category = TaskCategory(name=form.name.data)
+        category = TaskCategory(
+            name=form.name.data,
+            user_id=current_user.get_id()
+        )
         db.session.add(category)
         db.session.commit()
         flash('Category added successfully', 'success')
@@ -196,6 +201,7 @@ def add_category():
 @login_required
 def delete_category(id):
     category = TaskCategory.query.get(id)
+    render = request.args.get('render')
     if not category:
         flash('Category not found', 'danger')
         return redirect(url_for('add_category'))
@@ -210,6 +216,8 @@ def delete_category(id):
             for task in tasks:
                 flash(f'{task.title} has category {task.categories.name}', 'danger')
             return redirect(url_for('add_category'))
+    if render:
+        return redirect(url_for(render))
     return redirect(url_for('add_category'))
 
 
@@ -286,6 +294,7 @@ def monthly_tasks():
         Task.due_date.between(start_date, end_date)
     ).all()
     return render_template('tasks.html', tasks=tasks)
+
 
 @app.route('/priority_tasks/<string:priority>', methods=['GET', 'POST'])
 @login_required

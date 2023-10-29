@@ -43,3 +43,13 @@ function changePassword() {
         divChange.style.display = 'none';
     }
 }
+
+function showVert(categoryName) {
+    const category = document.getElementById(categoryName + '-vert');
+    if (category.style.display === 'none') {
+        category.style.display = 'flex';
+    }
+    else {
+        category.style.display = 'none';
+    }
+}
